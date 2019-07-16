@@ -7,6 +7,9 @@
   <!-- Main CSS file -->
   <link rel="stylesheet" href="css/styles.css" type="text/css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
+  <!-- including MapBox CDN; see https://www.mapbox.com/install/js/cdn-install/ reviewed 2019-07-15 -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
   <title>Restaurant Info</title>
 </head>
 
@@ -30,7 +33,15 @@
   <main id="maincontent">
     <!-- Beginning map -->
     <section id="map-container">
-      <div id="map"></div>
+      <!-- including MapBox map div; see https://www.mapbox.com/install/js/cdn-add/ reviewed 2019-07-15 -->
+      <div id='map' style='width: 400px; height: 300px;'></div>
+      <script>
+        mapboxgl.accessToken = 'sk.eyJ1IjoiamtlbGxleTM5OSIsImEiOiJjank1NWVmMGgwNDFiM21vMHkwZ3NhemxnIn0.887SXVPDW4Ucaje_ojAKzw';
+        var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets-v11'
+        });
+      </script>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
