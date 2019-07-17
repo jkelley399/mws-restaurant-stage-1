@@ -22,7 +22,7 @@ initMap = () => {
         scrollWheelZoom: false
       });
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-        mapboxToken: '<sk.eyJ1IjoiamtlbGxleTM5OSIsImEiOiJjank1NWVmMGgwNDFiM21vMHkwZ3NhemxnIn0.887SXVPDW4Ucaje_ojAKzw>',
+        mapboxToken: 'pk.eyJ1IjoiamtlbGxleTM5OSIsImEiOiJjank1NWFoZm0wM3h6M2NsaWc0aG9xeDZhIn0.h5Y873apUNR4dRUnBZNvyQ',
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
           '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -192,3 +192,10 @@ getParameterByName = (name, url) => {
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+// REFERENCES RELIED UPON:
+// 'Udacity Restaurant Reviews App Stage 1: How to configure Mapbox access token,'
+// https://medium.com/@andresaaap/
+// udacity-restaurant-reviews-app-stage-1-how-to-configure-mapbox-access-token-856721074f7d
+
+// Above reviewed 2019-07-15
