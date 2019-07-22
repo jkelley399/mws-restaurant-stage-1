@@ -81,16 +81,34 @@ fetchRestaurantFromURL = (callback) => {
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
   const name = document.getElementById('restaurant-name');
+  // using setAttribute to add tabindex at creation (here and below)
+  //   approach based upon
+  //   https://stackoverflow.com/questions/22191576/
+  //   javascript-createelement-and-setattribute
+  //   reviewed 2019-07-19
+  name.setAttribute('tabindex', '0');
   name.innerHTML = restaurant.name;
 
   const address = document.getElementById('restaurant-address');
+  address.setAttribute('tabindex', '0');
   address.innerHTML = restaurant.address;
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  // WIP: responsive image on one image to demonstrate approach
+  // testing window.screen.width for responsive image
+  //   approach based upon
+  //   https://developer.mozilla.org/en-US/docs/Web/API/Screen/width
+  // https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+  // https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
+  //   reviewed 2019-07-20
+    if ((window.screen.width <= 800) && (image.src.includes('1.jpg'))) {
+      image.src = '/img/1tall.jpg';
+    }
 
   const cuisine = document.getElementById('restaurant-cuisine');
+  cuisine.setAttribute('tabindex', '0');
   cuisine.innerHTML = restaurant.cuisine_type;
 
   // fill operating hours
@@ -111,10 +129,12 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
 
     const day = document.createElement('td');
     day.innerHTML = key;
+    day.setAttribute('tabindex', '0');
     row.appendChild(day);
 
     const time = document.createElement('td');
     time.innerHTML = operatingHours[key];
+    time.setAttribute('tabindex', '0');
     row.appendChild(time);
 
     hours.appendChild(row);
@@ -128,11 +148,13 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h2');
   title.innerHTML = 'Reviews';
+  title.setAttribute('tabindex', '0');
   container.appendChild(title);
 
   if (!reviews) {
     const noReviews = document.createElement('p');
     noReviews.innerHTML = 'No reviews yet!';
+    noReviews.setAttribute('tabindex', '0');
     container.appendChild(noReviews);
     return;
   }
@@ -150,18 +172,22 @@ createReviewHTML = (review) => {
   const li = document.createElement('li');
   const name = document.createElement('p');
   name.innerHTML = review.name;
+  name.setAttribute('tabindex', '0');
   li.appendChild(name);
 
   const date = document.createElement('p');
   date.innerHTML = review.date;
+  date.setAttribute('tabindex', '0');
   li.appendChild(date);
 
   const rating = document.createElement('p');
   rating.innerHTML = `Rating: ${review.rating}`;
+  rating.setAttribute('tabindex', '0');
   li.appendChild(rating);
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
+  comments.setAttribute('tabindex', '0');
   li.appendChild(comments);
 
   return li;
@@ -174,6 +200,8 @@ fillBreadcrumb = (restaurant=self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
   const li = document.createElement('li');
   li.innerHTML = restaurant.name;
+  li.setAttribute('tabindex', '0');
+  li.setAttribute('id', 'in breadcrums for restaurant ' + restaurant.name);
   breadcrumb.appendChild(li);
 }
 
@@ -193,9 +221,3 @@ getParameterByName = (name, url) => {
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-// REFERENCES RELIED UPON:
-// 'Udacity Restaurant Reviews App Stage 1: How to configure Mapbox access token,'
-// https://medium.com/@andresaaap/
-// udacity-restaurant-reviews-app-stage-1-how-to-configure-mapbox-access-token-856721074f7d
-
-// Above reviewed 2019-07-15

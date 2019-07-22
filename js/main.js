@@ -147,7 +147,24 @@ resetRestaurants = (restaurants) => {
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
   const ul = document.getElementById('restaurants-list');
   restaurants.forEach(restaurant => {
-    ul.append(createRestaurantHTML(restaurant));
+  // WIP: responsive image on one image to demonstrate approach
+  // testing window.screen.width for responsive image
+  //   approach based upon
+  //   https://developer.mozilla.org/en-US/docs/Web/API/Screen/width
+  // https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+  // https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
+  //   reviewed 2019-07-20
+    if (window.screen.width <= 800) {
+      if (self.restaurants[0].photograph == '1.jpg') {
+        ul.append(createRestaurantHTML(restaurant));
+        let targetImage = document.querySelector('[src="/img/1.jpg"]');
+        targetImage.setAttribute('src', '/img/1tall.jpg');
+      } else {
+        ul.append(createRestaurantHTML(restaurant));
+      }
+    } else {
+      ul.append(createRestaurantHTML(restaurant));
+    }
   });
   addMarkersToMap();
 }
@@ -161,18 +178,27 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.setAttribute('alt', 'photograph of ' + restaurant.name);
   li.append(image);
 
   const name = document.createElement('h1');
   name.innerHTML = restaurant.name;
+  // using setAttribute to add tabindex at creation (here and below)
+  //   approach based upon
+  //   https://stackoverflow.com/questions/22191576/
+  //   javascript-createelement-and-setattribute
+  //   reviewed 2019-07-19
+  name.setAttribute('tabindex', '0');
   li.append(name);
 
   const neighborhood = document.createElement('p');
   neighborhood.innerHTML = restaurant.neighborhood;
+  neighborhood.setAttribute('tabindex', '0');
   li.append(neighborhood);
 
   const address = document.createElement('p');
   address.innerHTML = restaurant.address;
+  address.setAttribute('tabindex', '0');
   li.append(address);
 
   const more = document.createElement('a');
@@ -209,3 +235,42 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 } */
 
+// REFERENCES RELIED UPON in main.js and restaurant_info.js:
+// 'Udacity Restaurant Reviews App Stage 1: How to configure Mapbox access token,'
+// https://medium.com/@andresaaap/
+// udacity-restaurant-reviews-app-stage-1-how-to-configure-mapbox-access-token-856721074f7
+// Above reviewed 2019-07-15
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
+// Above reviewed 2019-07-17
+// https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
+// https://html.com/attributes/select-tabindex/
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex
+// Above reviewed 2019-07-18
+// https://stackoverflow.com/questions/22191576/javascript-createelement-and-setattribute
+// Above reviewed 2019-07-19
+// https://developer.mozilla.org/en-US/docs/Web/API/Screen/width
+// https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
+// https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML
+// https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
+// https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
+// Above reviewed 2019-07-20
+
+
+// JK WIP NOTES
+// - 2019-07-18
+// - Manually adding tabindex = 0; in DevTools worked
+// - 2019-07-19
+// - figured out how to use setAttribute to establish tabindex based on
+//   - https://stackoverflow.com/questions/22191576/javascript-createelement-and-setattribute
+// - 2019-07-20
+// - figured out how to add multi-size images and implemented in main.js fillRestaurantsHTML()
+//   - only saw one that seemed to need it, so did it for Mission Chinese Food only
+// - added semantic tags to breadcrumbs in restaurant.html and restaurant_info.js fillBreadcrumb()
+// - began work on ServiceWorker
+// - 2019-07-21
+//   - first rough pass on ServiceWorker
+//   - refined basic responsive behavior

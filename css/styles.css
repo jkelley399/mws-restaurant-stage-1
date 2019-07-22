@@ -8,11 +8,18 @@ html, ul, li, #restaurants-list li a, #restaurant-address, #restaurant-cuisine  
 h1, { font-size: 1.50em; }
 h2, #restaurant-name, #reviews-container h2 { font-size: 1.40em; }
 h3, #breadcrumb, nav h1 a, #restaurants-list li h1 { font-size: 1.30em; }
-h4, .filter-options select, #restaurants-list p { font-size: 1.20em; }
+h4, .filter-options select, #restaurants-list p { font-size: 0.95em; }
 small, #footer { font-size: 0.9em; }
 .box { padding: 1.25em; }
-@media screen and (min-width: 1400px) {
+
+@media screen and (min-width: 800px) {
   html { font-size: 1.25em; }
+}
+@media screen and (min-width: 1000px) {
+  html { font-size: 1.50em; }
+}
+@media screen and (min-width: 1200px) {
+  html { font-size: 1.75em; }
 }
 
 body,td,th,p{
@@ -30,6 +37,12 @@ ul, li {
 	font-family: Arial, Helvetica, sans-serif;
 	/*font-size: 10pt;*/
 	color: #333;
+}
+/*based on
+"Images," https://developers.google.com/web/fundamentals/design-and-ux/responsive/images
+reviewed 2019-07-21*/
+img, embed, object, video {
+  max-width: 100%;
 }
 a {
 	color: orange;
@@ -78,6 +91,7 @@ nav {
   height: 90px;
   background-color: #252831;
   text-align: center;
+  order: 1;
 }
 nav h1 {
   margin: auto;
@@ -96,6 +110,7 @@ nav h1 a {
     /*font-size: 17px;*/
     margin: 0;
     width: calc(100%);
+    order: 2;
 }
 
 /* Display list items side by side */
@@ -160,7 +175,7 @@ nav h1 a {
   height: 35px;
   letter-spacing: 0;
   margin: 10px;
-  padding: 0 10px;
+  padding: 0;
   width: 40%;
 }
 
@@ -225,22 +240,22 @@ nav h1 a {
 
 /* ====================== Restaurant Details ====================== */
 .inside header {
-  position: fixed;
+  position: relative; /*previously fixed*/
   top: 0;
   width: 100%;
-  z-index: 1000;
+  /*z-index: 1000;*/
 }
 .inside #map-container {
   background: blue none repeat scroll 0 0;
   /*height reduced from 87%*/
   height: 40%;
-  position: fixed;
+  position: relative;
   right: 0;
-  top: 80px;
+  top: 5%;
   width: 100%;
   /*adding order for flexbox*/
-  order: 1;
-  z-index: 500;
+  order: 0;
+  /*z-index: 500;*/
 }
 /*adding flexbox for 'inside' by styling #maincontent
   can't do this on 'body' because it would affect index.html
@@ -303,19 +318,19 @@ old code follows*/
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 19em 2em 2em;
+  padding: 2em 2em 2em;
   /*adding 100% width*/
   width: 100%;
   text-align: center;
 }
 #restaurant-container {
   /*adding order for flexbox*/
-  order: 2;
+  order: 0;
 }
 #reviews-container {
   padding: 30px 40px 80px;
   /*adding order for flexbox*/
-  order: 3;
+  order: 0;
 }
 #reviews-container h2 {
   color: #f58500;
@@ -323,6 +338,8 @@ old code follows*/
   font-weight: 300;
   letter-spacing: -1px;
   padding-bottom: 1pt;
+  /*adding order for flexbox*/
+  order: 0;
 }
 #reviews-list {
   margin: 0;
@@ -334,7 +351,7 @@ old code follows*/
   display: block;
   list-style-type: none;
   margin: 0 0 30px;
-  overflow: hidden;
+  /*overflow: hidden;*/
   padding: 0 20px 20px;
   position: relative;
   /*changing to 100% width*/
@@ -347,7 +364,6 @@ old code follows*/
   color: #666;
 }
 
-
 /*REFERENCES RELIED UPON:
 "Max-width on elements, https://classroom.udacity.com/nanodegrees/nd001/parts/
 f9b11b6a-1f78-49e8-ba81-6097fd3d8239/modules/016c1719-1d80-4e80-9ad0-15016a84e1aa/
@@ -359,9 +375,7 @@ Above reviewed 2019-07-16
 https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 https://stackoverflow.com/questions/15629511/
 how-can-i-make-my-footer-center-to-the-bottom-of-the-page/15629635
-
 Above reviewed 2019-07-17
-
-
-
+https://developers.google.com/web/fundamentals/design-and-ux/responsive/images
+Above reviewed 2019-07-21
 */
