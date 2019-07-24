@@ -1,3 +1,17 @@
+// The service worker registration is based upon
+// "Restaurant Reviews App Walkthrough Part 4 – Service Workers," which I reviewed
+// at the suggestion of the first anonymous reviewer; among other things,
+// this refererence makes clear that the registration should be placed in main.js; see:
+// https://matthewcranford.com/restaurant-reviews-app-walkthrough-part-4-service-workers/
+// reviewed 2019-07-22
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('/sw.js')
+    .catch(function(err) {
+      console.error(err);
+    });
+}
+
 let restaurants,
   neighborhoods,
   cuisines
@@ -258,7 +272,13 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 // https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
 // https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
 // Above reviewed 2019-07-20
-
+// https://github.com/jakearchibald/simple-serviceworker-tutorial/blob/gh-pages/index.html
+// https://developers.google.com/web/fundamentals/primers/service-workers/
+// https://developers.google.com/web/fundamentals/primers/service-workers/registration
+// Above reviewed 2019-07-21
+// At the suggestion of the first anonymous reviewer, I also reviewed
+// https://matthewcranford.com/restaurant-reviews-app-walkthrough-part-4-service-workers/
+// reviewed 2019-07-22
 
 // JK WIP NOTES
 // - 2019-07-18
@@ -274,3 +294,6 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 // - 2019-07-21
 //   - first rough pass on ServiceWorker
 //   - refined basic responsive behavior
+// At the suggestion of the first anonymous reviewer, I also reviewed
+// https://matthewcranford.com/restaurant-reviews-app-walkthrough-part-4-service-workers/
+// reviewed 2019-07-22
