@@ -195,7 +195,10 @@ createRestaurantHTML = (restaurant) => {
   image.setAttribute('alt', 'photograph of ' + restaurant.name);
   li.append(image);
 
-  const name = document.createElement('h1');
+  // changing to h2 tag for both better structuring and semantic correctness
+  //     at suggestion of first anonymous Udacity reviewer
+  //     review comments reviewed 2019-07-24
+  const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
   // using setAttribute to add tabindex at creation (here and below)
   //   approach based upon

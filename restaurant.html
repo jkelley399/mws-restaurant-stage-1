@@ -24,7 +24,9 @@
       <h1><a href="/">Restaurant Reviews</a></h1>
     </nav>
     <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" >
+    <!-- adding ARIA role for #breadcrumb in form suggested by first anonymous Udacity reviewer
+      review comments reviewed 2019-07-24 -->
+    <ul id="breadcrumb" role="navigation" aria-label="Breadcrumb">
       <li><a href="/" id="breadcrumb-return-to-home-page">Home</a></li>
     </ul>
     <!-- End breadcrumb -->
@@ -37,8 +39,12 @@
     <!-- Beginning map -->
     <section id="map-container">
       <!-- including MapBox map div; see https://www.mapbox.com/install/js/cdn-add/ reviewed 2019-07-15 -->
-      <!-- Can't seem to move to styles.css without problems -->
-      <div id='map' style='width: 100%; max-width: 100%; height: 300px;'></div>
+      <!-- TODO: can't seem to move to styles.css without problems; not sure why -->
+      <!-- adding ARIA role for #map in form suggested by first anonymous Udacity reviewer
+      review comments reviewed 2019-07-24 -->
+      <div id='map' role="application" aria-label="location"
+       style='width: 100%; max-width: 100%; height: 300px;'>
+      </div>
       <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoiamtlbGxleTM5OSIsImEiOiJjank1NWFoZm0wM3h6M2NsaWc0aG9xeDZhIn0.h5Y873apUNR4dRUnBZNvyQ';
         var map = new mapboxgl.Map({
@@ -50,7 +56,10 @@
     <!-- End map -->
     <!-- Beginning restaurant -->
     <section id="restaurant-container">
-      <h1 id="restaurant-name"></h1>
+      <!-- changing to h2 tag for #restaurant-name for semantic correctness
+      at suggestion of first anonymous Udacity reviewer
+      review comments reviewed 2019-07-24 -->
+      <h2 id="restaurant-name"></h1>
       <img id="restaurant-img">
       <p id="restaurant-cuisine"></p>
       <p id="restaurant-address"></p>

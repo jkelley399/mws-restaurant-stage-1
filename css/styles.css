@@ -150,15 +150,22 @@ nav h1 a {
   background-color: #ccc;
 }
 /* ====================== Restaurant Filtering ====================== */
+/*Modifying .filter-options height and padding based upon
+"Restaurant Reviews App Walkthrough Part 2 – Responsiveness,"
+which I reviewed at the suggestion of the first anonymous Udacity reviewer; see:
+https://matthewcranford.com/restaurant-reviews-app-walkthrough-part-2-responsiveness/
+reviewed 2019-07-24*/
+
 .filter-options {
   width: 100%;
-  height: 50px;
+  height: 100%;
   background-color: #3397DB;
   align-items: center;
   /*centering the tabs; based on https://www.freecodecamp.org/news/
   how-to-center-things-with-style-in-css-dc87b7542689/
   reviewed 2019-07-16*/
   text-align: center;
+  padding: 0.25em;
 }
 .filter-options h2 {
   color: white;
@@ -180,16 +187,27 @@ nav h1 a {
 }
 
 /* ====================== Restaurant Listing ====================== */
+/*Adding #restaurants-list display and flex-direction based upon
+"Restaurant Reviews App Walkthrough Part 2 – Responsiveness,"
+which I reviewed at the suggestion of the first anonymous Udacity reviewer; see:
+https://matthewcranford.com/restaurant-reviews-app-walkthrough-part-2-responsiveness/
+reviewed 2019-07-24*/
 #restaurants-list {
   background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0;
   padding: 0 2em, 0, 2em;
   text-align: center;
-  padding-inline-start: 0;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding-inline-start: 0.1em;
   width: 100%;
 }
+/*Adding #restaurants-list max-width (for desktop) based upon
+"Restaurant Reviews App Walkthrough Part 2 – Responsiveness,"
+which I reviewed at the suggestion of the first anonymous Udacity reviewer; see:
+https://matthewcranford.com/restaurant-reviews-app-walkthrough-part-2-responsiveness/
+reviewed 2019-07-24*/
 #restaurants-list li {
   background-color: #fff;
   border-right: 1em;
@@ -201,6 +219,7 @@ nav h1 a {
   /*padding: 0 2em, 0, 2em;*/
   /*centering and moving to relative width*/
   text-align: center;
+  max-width: 100%;
   width: 100%;
 }
 #restaurants-list .restaurant-img {
@@ -313,7 +332,7 @@ old code follows*/
   padding: 2px 0;
   text-align: center;
   text-transform: uppercase;
-	width: 90%;
+	width: 100%;
 }
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
@@ -328,7 +347,7 @@ old code follows*/
   order: 0;
 }
 #reviews-container {
-  padding: 30px 40px 80px;
+  padding: 50px;
   /*adding order for flexbox*/
   order: 0;
 }
@@ -362,6 +381,8 @@ old code follows*/
 }
 #restaurant-hours td {
   color: #666;
+  text-align: left;
+  padding-left:;
 }
 
 /*REFERENCES RELIED UPON:
@@ -378,4 +399,7 @@ how-can-i-make-my-footer-center-to-the-bottom-of-the-page/15629635
 Above reviewed 2019-07-17
 https://developers.google.com/web/fundamentals/design-and-ux/responsive/images
 Above reviewed 2019-07-21
+https://matthewcranford.com/restaurant-reviews-app-walkthrough-part-2-responsiveness/
+Above reviewed 2019-07-24
+
 */

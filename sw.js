@@ -1,8 +1,8 @@
 // The revised sw.js is based upon
 // "Restaurant Reviews App Walkthrough Part 4 – Service Workers," which I reviewed
-// at the suggestion of the first anonymous reviewer; see:
+// at the suggestion of the first anonymous Udacity reviewer; see:
 // https://matthewcranford.com/restaurant-reviews-app-walkthrough-part-4-service-workers/
-// reviewed 2019-07-22
+// reviewed 2019-07-22 and 2019-07-24
 
 console.log('Service Worker: Registered');
 
@@ -59,7 +59,7 @@ self.addEventListener('fetch', function(event) {
                 if (response) {
                     // log event.request
                     console.log('Found ', event.request, ' in cache.');
-                    console.log('In primary fetch(event.request), response.status= ',
+                    console.log('In primary fetch (event.request), response.status= ',
                         event.status);
                     return response;
                 }
@@ -124,3 +124,12 @@ self.addEventListener('fetch', function(event) {
 // TODO: Service Worker not working in Application/Offline ->
     // Try here next time: https://developers.google.com/web/fundamentals/codelabs/debugging-service-workers/
 // reviewed 2019-07-23
+// As of 2019-07-24:
+// - Working somewhat:
+//     - Cache exists
+//         - See, e.g., going to http://localhost:8000/restaurant.html?id=1
+//             - Everything seems to work except the mapbox --- maybe write new code to eliminate in offline?
+//     - Fetch works in offline application mode for files on the list
+//         - Which raises two questions:
+//             - How to deal with the APIs in offline mode, e.g. mapbox
+//             - Do you have to list individual files?  Why not directories?
